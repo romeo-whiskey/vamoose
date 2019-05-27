@@ -1,0 +1,72 @@
+@import 'variables';
+@import 'mixins';
+
+:root {
+    // default below 600px
+    font-size: 18px;
+}
+
+body,
+html {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    align-items: center;
+    background: rgba(0, 70, 127, 1); // Old browsers
+    background: linear-gradient(135deg, rgba(1, 130, 127, 1) 0%,rgba(0, 70, 127, 1) 100%); // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
+    color: $white;
+    display: flex;
+    font-family: Roboto, 'Helvetica-Neue', Arial, sans-serif;
+    font-size: 16px;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+
+    a {
+        color: $link-colour;
+    }
+
+    h1 {
+        @include fluid-text($min-width: 320, $max-width: 540, $min-font: 42, $max-font: 72);
+        font-weight: 100;
+        margin-bottom: .25em;
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+
+    .row > div {
+        float: none;
+        margin: 0 auto;
+    }
+
+    footer {
+        border-top: $border;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        text-align: center;
+    }
+
+    .container {
+        flex: 0 0 auto;
+        max-width: 100%;
+        padding: 20px;
+        width: 530px;
+    }
+}
+
+* {
+    &,
+    &::before,
+    &::after {
+        box-sizing: border-box;
+    }
+  }
+

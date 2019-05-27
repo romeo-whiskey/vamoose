@@ -1,0 +1,58 @@
+{
+  "name": "vamoose",
+  "version": "0.1.0",
+  "description": "Accessible input field clearer",
+  "main": "vamoose.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp watch",
+    "build:gh-page": "gulp gh-pages-preflight",
+    "deploy": "npm run build:gh-page && gh-pages -d gh-page/",
+    "deploy:major": "npm run deploy && npm version major",
+    "deploy:minor": "npm run deploy && npm version minor",
+    "deploy:patch": "npm run deploy && npm version patch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghostrydr/vamoose.git"
+  },
+  "keywords": [
+    "clear",
+    "vamoose",
+    "text",
+    "input",
+    "field",
+    "accessible",
+    "accessibility",
+    "a11y"
+  ],
+  "author": "Russell Wilson <russell@romeo-whiskey.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "browser-sync": "^2.23.3",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-import": "^2.8.0",
+    "gh-pages": "^1.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-plumber": "^1.2.0",
+    "gulp-processhtml": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-lint": "^1.3.4",
+    "gulp-uglify": "^3.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ghostrydr/vamoose/issues"
+  },
+  "homepage": "https://github.com/ghostrydr/vamoose#readme"
+}

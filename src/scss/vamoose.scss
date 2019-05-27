@@ -1,0 +1,87 @@
+@import 'variables';
+@import 'mixins';
+
+.input-wrapper {
+    position: relative;
+
+    input,
+    textarea {
+        border: $border;
+        color: $text-color;
+        display: block;
+        font-size: $font-size;
+        font-weight: 300;
+        padding: 10px;
+        width: 100%;
+
+        &:focus {
+            @include input-hover-state;
+        }
+    }
+
+    input {
+        height: 44px;
+
+        &[type='text'] {
+            // sass-lint:disable-all
+            &::-ms-clear {
+                display: none;
+            }
+            // sass-lint:enable-all
+        }
+    }
+
+    &.has-focus {
+        .clear-input {
+            display: block;
+            line-height: $line-height;
+            position: absolute;
+            right: .5em;
+            top: 50%;
+            transform: translate(0, -50%);
+
+
+            &:focus {
+                outline: $secondary-blue auto 5px;
+            }
+
+            &::after {
+                align-items: center;
+                color: $secondary-blue;
+                content: '\e870';
+                cursor: pointer;
+                display: flex;
+                font-family: $glyphs;
+                font-size: $glyph-size;
+                height: 1em;
+                justify-content: center;
+                transform: translate(0, -1px);
+                width: 1em;
+            }
+        }
+
+        input,
+        textarea {
+            @include input-hover-state;
+        }
+
+        textarea {
+            + .clear-input {
+                bottom: -$line-height;
+                right: 0;
+                top: auto;
+                transform: translate(0, 0);
+
+                &::after {
+                    color: $white;
+                    content: attr(data-text);
+                    display: block;
+                    font-family: $font-family;
+                    font-size: $font-size;
+                    text-align: right;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

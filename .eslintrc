@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017,
+    },
+    "root": true,
+    "extends": ["eslint-config-airbnb"],
+    "globals": {
+        "jQuery": false
+    },
+    "rules": {
+        "indent": ["error", 4, {
+            "SwitchCase": 1
+        }],
+        "max-len": ["warn", {
+            "code": 100,
+            "ignoreComments": true,
+            "ignoreTrailingComments": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true
+        }],
+        "no-param-reassign": ["error", {
+            "props": false
+        }],
+        "no-plusplus": ["error", {
+            "allowForLoopAfterthoughts": true
+        }],
+        "no-unused-expressions": ["error", {
+            "allowShortCircuit": true,
+            "allowTernary": true,
+        }],
+    }
+}

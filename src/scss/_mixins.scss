@@ -1,0 +1,19 @@
+@mixin input-hover-state {
+    outline: none;
+    border-color: $teal;
+    background: $lighter-blue;
+}
+
+// https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+@mixin fluid-text($min-width: 600, $max-width: 900, $min-font: 42, $max-font: 72) {
+
+    font-size: #{$min-font}px;
+
+    @media (min-width: #{$min-width}px) and (max-width: #{$max-width}px){
+        font-size: calc( #{$min-font}px + (#{$max-font} - #{$min-font}) * ( (100vw - #{$min-width}px) / ( #{$max-width} - #{$min-width}) ));
+    }
+    @media (min-width: #{$max-width}px){
+        font-size: #{$max-font}px;
+    }
+
+}
