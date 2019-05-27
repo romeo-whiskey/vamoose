@@ -20,16 +20,10 @@ gulp.task('browser-sync', ['css', 'css:demo', 'js'], () => {
     });
 });
 
-gulp.task('watch', ['browser-sync', 'demo-files'], () => {
+gulp.task('watch', ['browser-sync'], () => {
     gulp.watch(['index.html'], ['demo-files']);
     gulp.watch(['src/js/*.js'], ['js']);
     gulp.watch(['src/scss/*.scss'], ['css', 'css:demo']);
-});
-
-gulp.task('demo-files', () => {
-    bs.reload();
-    return gulp.src('index.html')
-        .pipe(gulp.dest('./demo/'));
 });
 
 gulp.task('css:demo', () => {
