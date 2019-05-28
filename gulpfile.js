@@ -56,12 +56,7 @@ gulp.task('js', () => {
     return gulp.src(['src/js/*.js'])
         .pipe(plumber())
         // .pipe(concat('concat.js'))
-        .pipe(babel({
-            presets: [
-                'env',
-                'babel-preset-stage-3',
-            ],
-        }))
+        .pipe(babel())
         .pipe(gulp.dest('dist/js'))
         .pipe(uglify())
         .pipe(rename({ extname: '.min.js' }))
