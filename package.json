@@ -1,6 +1,6 @@
 {
   "name": "vamoose",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Accessible input field clearer",
   "main": "dist/js/vamoose.js",
   "scripts": {
