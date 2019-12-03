@@ -1,4 +1,5 @@
 import { terser } from 'rollup-plugin-terser';
+import scss from 'rollup-plugin-scss';
 
 const output = 'dist/';
 
@@ -10,14 +11,19 @@ export default {
         format: 'cjs',
     },
     {
-        file: `${output}/vamoose.js`,
+        file: `${output}/bundle.min.js`,
         format: 'iife',
         name: 'version',
-        plugins: [terser()],
         globals: {
             window: 'window',
             document: 'document',
         },
         interop: false,
     }],
+    plugins: [
+        terser(),
+        scss({
+            output: `${output}/styles.css`,
+        }),
+    ],
 };

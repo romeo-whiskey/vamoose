@@ -1,5 +1,6 @@
 import window from 'window';
 import document from 'document';
+import '../scss/vamoose.scss';
 
 // Helper functions
 function forEach(array, cb, scope) {
