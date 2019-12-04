@@ -1,5 +1,3 @@
-import window from 'window';
-import document from 'document';
 import '../scss/vamoose.scss';
 
 // Helper functions
@@ -161,5 +159,5 @@ const vamoose = (selector, options = {}) => {
 };
 
 Vamoose.fn.init.prototype = Vamoose.fn;
-window.vamoose = vamoose;
+export default vamoose;
 

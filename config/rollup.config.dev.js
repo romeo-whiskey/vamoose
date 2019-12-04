@@ -12,7 +12,7 @@ export default [{
     output: [{
         file: `${output}/vamoose.js`,
         format: 'iife',
-        name: 'Vamoose',
+        name: 'vamoose',
         globals: {
             window: 'window',
             document: 'document',
@@ -34,6 +34,7 @@ export default [{
     output: [{
         file: `${output}/demo.js`,
         format: 'cjs',
+        name: 'demo',
         interop: false,
     }],
     plugins: [

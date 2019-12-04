@@ -8,25 +8,38 @@ export default {
     input: 'src/js/vamoose.js',
     external: ['window', 'document'],
     output: [{
-        file: `${output}/vamoose.js`,
-        format: 'cjs',
+        name: 'vamoose',
+        file: `${output}/vamoose.esm.js`,
+        format: 'esm',
         interop: false,
     },
     {
-        file: `${output}/vamoose.min.js`,
+        file: `${output}/vamoose.js`,
         format: 'iife',
-        name: 'version',
+        name: 'vamoose',
         globals: {
             window: 'window',
             document: 'document',
         },
         interop: false,
+    },
+    {
+        file: `${output}/vamoose.min.js`,
+        format: 'iife',
+        name: 'vamoose',
+        globals: {
+            window: 'window',
+            document: 'document',
+        },
+        interop: false,
+        plugins: [
+            terser(),
+        ],
     }],
     plugins: [
         clear({
             targets: [output],
         }),
-        terser(),
         scss({
             output: `${output}/vamoose.css`,
         }),
