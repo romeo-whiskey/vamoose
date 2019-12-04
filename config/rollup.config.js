@@ -2,19 +2,21 @@ import { terser } from 'rollup-plugin-terser';
 import scss from 'rollup-plugin-scss';
 import clear from 'rollup-plugin-clear';
 
-const output = 'dist/';
+const pkg = require('../package.json');
+
+const output = pkg.main.substring(0, pkg.main.lastIndexOf('/') + 1);
 
 export default {
     input: 'src/js/vamoose.js',
     external: ['window', 'document'],
     output: [{
         name: 'vamoose',
-        file: `${output}/vamoose.esm.js`,
+        file: pkg.module,
         format: 'esm',
         interop: false,
     },
     {
-        file: `${output}/vamoose.js`,
+        file: pkg.main,
         format: 'iife',
         name: 'vamoose',
         globals: {
@@ -24,7 +26,7 @@ export default {
         interop: false,
     },
     {
-        file: `${output}/vamoose.min.js`,
+        file: `${pkg.main.slice(0, pkg.main.lastIndexOf('.'))}.min${pkg.main.slice(pkg.main.lastIndexOf('.'))}`,
         format: 'iife',
         name: 'vamoose',
         globals: {
