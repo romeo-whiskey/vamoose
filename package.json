@@ -6,8 +6,8 @@
   "module": "dist/vamoose.esm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:gh-page": "gulp gh-pages-preflight",
-    "deploy": "npm run build:gh-page && gh-pages -d gh-page/",
+    "bundle:gh-page": "cp -R ./demo/ ./gh-page",
+    "deploy": "npm run bundle:gh-page && gh-pages -d gh-page/",
     "deploy:major": "npm run deploy && npm version major",
     "deploy:minor": "npm run deploy && npm version minor",
     "deploy:patch": "npm run deploy && npm version patch",
