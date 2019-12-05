@@ -1,4 +1,5 @@
 import scss from 'rollup-plugin-scss';
+import json from '@rollup/plugin-json';
 
 const output = 'demo/';
 
@@ -22,6 +23,7 @@ export default [{
         scss({
             output: true,
         }),
+        json(),
     ],
 }, {
     input: 'src/js/demo.js',
@@ -35,5 +37,6 @@ export default [{
         scss({
             output: true,
         }),
+        json(),
     ],
 }];

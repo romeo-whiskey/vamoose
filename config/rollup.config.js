@@ -4,6 +4,7 @@ import clear from 'rollup-plugin-clear';
 import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import cssnano from 'cssnano';
+import json from '@rollup/plugin-json';
 
 const pkg = require('../package.json');
 
@@ -51,5 +52,6 @@ export default {
                 .process(css)
                 .then(result => result.css),
         }),
+        json(),
     ],
 };
