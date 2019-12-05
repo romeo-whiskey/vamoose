@@ -1,5 +1,4 @@
 import scss from 'rollup-plugin-scss';
-import browsersync from 'rollup-plugin-browsersync';
 
 const output = 'demo/';
 
@@ -23,7 +22,6 @@ export default [{
         scss({
             output: true,
         }),
-        browsersync({ server: output }),
     ],
 }, {
     input: 'src/js/demo.js',
