@@ -1,8 +1,6 @@
 var vamoose = (function () {
     'use strict';
 
-    var version = "0.1.2";
-
     // Helper functions
     function forEach(array, cb, scope) {
         for (let i = 0; i < array.length; i++) {
@@ -32,7 +30,7 @@ var vamoose = (function () {
 
     Vamoose.fn = Vamoose.prototype = { // eslint-disable-line no-multi-assign
         constructor: Vamoose,
-        version,
+        version: '0.1.1', // TODO: pull this from package.json
         init() {
             this.wrapper = document.createElement('div');
             this.wrapper.className = 'input-wrapper';
