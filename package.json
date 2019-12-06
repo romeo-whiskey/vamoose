@@ -5,14 +5,14 @@
   "main": "dist/vamoose.js",
   "module": "dist/vamoose.esm.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rollup --config config/rollup.config.dev.js --watch",
     "bundle:gh-page": "rollup --config config/rollup.config.demo.js",
     "deploy": "npm run bundle:gh-page && gh-pages -d gh-page/",
     "deploy:major": "npm run deploy && npm version major",
     "deploy:minor": "npm run deploy && npm version minor",
     "deploy:patch": "npm run deploy && npm version patch",
     "bundle": "rollup --config config/rollup.config.js",
-    "start": "rollup --config config/rollup.config.dev.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
