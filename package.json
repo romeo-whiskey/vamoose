@@ -1,6 +1,6 @@
 {
   "name": "vamoose",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Accessible input field clearer",
   "main": "dist/vamoose.js",
   "module": "dist/vamoose.esm.js",
@@ -31,6 +31,7 @@
   "author": "Russell Wilson <russell@romeo-whiskey.com>",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-json": "^4.0.0",
     "autoprefixer": "^9.7.3",
     "cssnano": "^4.1.10",
     "eslint": "^4.15.0",

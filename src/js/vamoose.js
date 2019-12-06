@@ -1,4 +1,5 @@
 import '../scss/vamoose.scss';
+import { version } from '../../package.json';
 
 // Helper functions
 function forEach(array, cb, scope) {
@@ -29,7 +30,7 @@ function Vamoose(element, options = {}) {
 
 Vamoose.fn = Vamoose.prototype = { // eslint-disable-line no-multi-assign
     constructor: Vamoose,
-    version: '0.1.1', // TODO: pull this from package.json
+    version,
     init() {
         this.wrapper = document.createElement('div');
         this.wrapper.className = 'input-wrapper';
