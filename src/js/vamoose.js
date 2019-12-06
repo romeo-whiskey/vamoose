@@ -34,23 +34,55 @@ Vamoose.fn = Vamoose.prototype = { // eslint-disable-line no-multi-assign
     init() {
         this.wrapper = document.createElement('div');
         this.wrapper.className = 'input-wrapper';
-        this.element.parentNode.insertBefore(this.wrapper, this.element);
-        this.element.parentNode.removeChild(this.element);
-        this.wrapper.appendChild(this.element);
+        const parent = this.element.parentNode;
 
+        if (this.options.useParentAsWrapper) {
+            this.wrapper = parent;
+            this.wrapper.classList.add('input-wrapper');
+        } else {
+            parent.insertBefore(this.wrapper, this.element);
+            parent.removeChild(this.element);
+            this.wrapper.appendChild(this.element);
+        }
 
         this.renderClearCTA();
 
-        this.element.addEventListener('focus', () => {
-            this.elementOnFocus();
-        });
+        // Element event listeners
+        switch (this.options.showOn) {
+            case 'change':
+            case 'input': {
+                this.element.addEventListener(this.options.showOn, () => {
+                    if (this.element.value) {
+                        this.engage();
+                    } else {
+                        this.disengage();
+                    }
+                });
+                this.watch();
 
+                // Show cta if value is prepopulated
+                if (this.element.value) {
+                    this.engage();
+                }
+
+                break;
+            }
+            case 'focus':
+            default: {
+                this.element.addEventListener('focus', () => {
+                    this.engage();
+                });
+
+                this.element.addEventListener('blur', () => {
+                    this.disengage();
+                });
+            }
+        }
+
+
+        // Wrapper event listeners
         this.wrapper.querySelector('.clear-input').addEventListener('focus', () => {
             this.clearOnFocus();
-        });
-
-        this.element.addEventListener('blur', () => {
-            this.elementOnBlur();
         });
 
         this.wrapper.querySelector('.clear-input').addEventListener('blur', () => {
@@ -90,18 +122,20 @@ Vamoose.fn = Vamoose.prototype = { // eslint-disable-line no-multi-assign
      * Handles when input is given focus
      * @returns {void}
      */
-    elementOnFocus() {
-        this.wrapper.classList.add('has-focus');
+    engage() {
+        this.showCTA();
         this.wrapper.querySelector('.clear-input').style.display = 'inline';
     },
 
 
     /**
-     * Handles when input is blurred
-     * @returns {void}
-     */
-    elementOnBlur() {
-        this.wrapper.classList.remove('has-focus');
+         * Handles when input is blurred
+         * @returns {void}
+         */
+    disengage() {
+        if (!this.element.value || this.options.hideOnBlur) {
+            this.hideCTA();
+        }
     },
 
 
@@ -110,7 +144,7 @@ Vamoose.fn = Vamoose.prototype = { // eslint-disable-line no-multi-assign
      * @returns {void}
      */
     clearOnFocus() {
-        this.wrapper.classList.add('has-focus');
+        this.showCTA();
     },
 
 
@@ -142,6 +176,31 @@ Vamoose.fn = Vamoose.prototype = { // eslint-disable-line no-multi-assign
         //     this.element.fireEvent(`on${eventToTrigger}`);
         // }
     },
+
+    showCTA() {
+        this.wrapper.classList.add('has-focus');
+    },
+
+    hideCTA() {
+        this.wrapper.classList.remove('has-focus');
+    },
+
+    watch() {
+        const timeout = 400;
+        this.oldValue = this.element.value;
+        this.snoopTimer = setTimeout(function s(self) {
+            if (self.element.value && self.oldValue !== self.element.value) {
+                trigger.call(self.element, 'change, input');
+                self.oldValue = self.element.value; // eslint-disable-line no-param-reassign
+            }
+
+            clearTimeout(self.snoopTimer);
+            self.snoopTimer = setTimeout(s, timeout, self); // eslint-disable-line no-param-reassign
+        },
+        timeout,
+        this,
+        );
+    },
 };
 
 /**
@@ -150,9 +209,20 @@ Vamoose.fn = Vamoose.prototype = { // eslint-disable-line no-multi-assign
  * @param {object} options plugin options object
  */
 const vamoose = (selector, options = {}) => {
-    const elements = document.querySelectorAll(selector);
+    let elements = [selector];
+    const config = {
+        hideOnBlur: true,
+        useParentAsWrapper: false,
+        showOn: 'focus', // {focus, input}
+        ...options,
+    };
+
+    if (typeof selector === 'string') {
+        elements = document.querySelectorAll(selector);
+    }
+
     forEach(elements, (index, element) => {
-        new Vamoose(element, options); // eslint-disable-line no-new
+        new Vamoose(element, config); // eslint-disable-line no-new
         // TODO: Cache plugin $ style??
         // element.dataset.vamoose = new Vamoose(element, options);
     });
