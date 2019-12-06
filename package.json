@@ -1,6 +1,6 @@
 {
   "name": "vamoose",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Accessible input field clearer",
   "main": "dist/vamoose.js",
   "module": "dist/vamoose.esm.js",
