@@ -1,6 +1,9 @@
 # vamoose
 Vamoose enables inputs to be cleared via the keyboard, with a11y in mind.
 
+
+![sample usage][sample]
+
 ## Installation
 ```html
 <script src="path/to/js/vamoose.js" type="text/javascript"></script>
@@ -25,3 +28,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 ## License
 See [LICENSE.md](LICENSE.md)
+
+[sample]: ./docs/sample.gif ""
