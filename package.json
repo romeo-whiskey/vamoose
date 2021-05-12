@@ -40,7 +40,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "gh-pages": "^1.1.0",
-    "postcss": "^7.0.23",
+    "postcss": "^8.2.10",
     "rollup": "^1.27.8",
     "rollup-plugin-browsersync": "^1.1.0",
     "rollup-plugin-clear": "^2.0.7",
